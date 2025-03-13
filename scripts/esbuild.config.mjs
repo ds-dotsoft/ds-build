@@ -14,7 +14,7 @@ esbuild
         outfile: "./dist/client.bundle.js",
 
         bundle: true,
-        external: ["esbuild", "chalk"],
+        external: ["esbuild", "chalk", "esbuild-plugin-d.ts"],
 
         platform: "node",
         format: "cjs",
@@ -24,13 +24,15 @@ esbuild
     .then(() => console.log(chalk.green("✅ [ds-build] Client build successful!")))
     .catch((error) => console.error(chalk.red("❌ [ds-build] Client build unsuccessful.\nError: " + error)));
 
+// dtsPlugin({ tsconfig: path.join(__dirname, "./source/client/tsconfig.json") })
+
 esbuild
     .build({
         entryPoints: ["./source/server/main.ts"],
         outfile: "./dist/server.bundle.js",
 
         bundle: true,
-        external: ["esbuild", "chalk"],
+        external: ["esbuild", "chalk", "esbuild-plugin-d.ts"],
 
         platform: "node",
         format: "cjs",
@@ -39,3 +41,5 @@ esbuild
     })
     .then(() => console.log(chalk.green("✅ [ds-build] Server build successful!")))
     .catch((error) => console.error(chalk.red("❌ [ds-build] Server build unsuccessful.\nError: " + error)));
+
+// dtsPlugin({ tsconfig: path.join(__dirname, "./source/server/tsconfig.json") })
